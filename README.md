@@ -1,1 +1,1 @@
-# basic-react-redux
+# Basic React app implementing Redux
