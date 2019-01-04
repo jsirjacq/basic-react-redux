@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {createPost} from "../store/actions/postActions";
+import services from "../services/services";
 
 class Postform extends Component {
 
@@ -25,10 +26,13 @@ class Postform extends Component {
             title: this.state.title,
             body: this.state.body
         }
-        this.props.createPost(post)
+        services.createPost(post).then((postRes) => {
+            this.props.createPost(postRes)
+        })
     }
 
     render() {
+        console.log("coucou");
         return (
             <div>
                 <h1>Add Post</h1>

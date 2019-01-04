@@ -1,12 +1,20 @@
 import React, {Component} from 'react';
-import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {fetchPosts} from "../store/actions/postActions";
+import services from "../services/services"
 
 class Posts extends Component {
 
-    componentWillMount() {
-        this.props.fetchPosts();
+    constructor(props) {
+        super(props);
+        this.refresh = this.refresh.bind(this);
+        this.refresh();
+    }
+
+    refresh() {
+        services.getPostsData().then((posts) => {
+            this.props.fetchPosts(posts);
+        });
     }
 
     componentWillReceiveProps(nextProps) {
@@ -31,15 +39,15 @@ class Posts extends Component {
     }
 }
 
-Posts.propTypes = {
-    fetchPosts: PropTypes.func.isRequired,
-    posts: PropTypes.array.isRequired,
-    newPost: PropTypes.object
-}
-
 const mapStateToProps = state => ({
     posts: state.posts.items,
     newPost: state.posts.item
 });
 
-export default connect(mapStateToProps, {fetchPosts})(Posts);
+function mapDispatchToProps(dispatch) {
+    return {
+        fetchPosts: posts => dispatch(fetchPosts(posts)),
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Posts);
