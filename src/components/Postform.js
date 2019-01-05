@@ -22,11 +22,11 @@ class Postform extends Component {
 
     onSubmit(e) {
         e.preventDefault();
-        const post = {
+        const postData = {
             title: this.state.title,
             body: this.state.body
         }
-        services.createPostRequest(post).then((postRes) => {
+        services.createPostRequest(postData).then((postRes) => {
             this.props.createPost(postRes)
         })
     }
@@ -58,10 +58,16 @@ Postform.propTypes = {
     createPost: PropTypes.func.isRequired
 }
 
+const mapStateToProps = state => ({
+    posts: state.posts.items,
+    newPost: state.posts.item
+});
+
+
 function mapDispatchToProps(dispatch) {
     return {
         createPost: post => dispatch(createPost(post)),
     }
 }
 
-export default connect(null, mapDispatchToProps)(Postform);
+export default connect(mapStateToProps, mapDispatchToProps)(Postform);

@@ -8,7 +8,6 @@ export function fetchPosts(posts) {
 }
 
 export function createPost(postData) {
-    console.log("createPost action")
     return {
         type: types.NEW_POST,
         payload: postData
