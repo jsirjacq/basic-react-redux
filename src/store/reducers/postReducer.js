@@ -13,6 +13,7 @@ export default function (state = initialState, action) {
                 items: action.payload
             };
         case types.NEW_POST:
+            console.log("createPost reducer")
             return {
                 ...state,
                 item: action.payload

@@ -26,13 +26,12 @@ class Postform extends Component {
             title: this.state.title,
             body: this.state.body
         }
-        services.createPost(post).then((postRes) => {
+        services.createPostRequest(post).then((postRes) => {
             this.props.createPost(postRes)
         })
     }
 
     render() {
-        console.log("coucou");
         return (
             <div>
                 <h1>Add Post</h1>
@@ -59,4 +58,10 @@ Postform.propTypes = {
     createPost: PropTypes.func.isRequired
 }
 
-export default connect(null, {createPost})(Postform);
+function mapDispatchToProps(dispatch) {
+    return {
+        createPost: post => dispatch(createPost(post)),
+    }
+}
+
+export default connect(null, mapDispatchToProps)(Postform);

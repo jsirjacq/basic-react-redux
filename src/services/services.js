@@ -3,6 +3,7 @@ const URLS = {
 };
 
 let getPostsDataPromise = null;
+let postPostDataPromise = null;
 
 function getPostsData() {
     if (getPostsDataPromise === null) {
@@ -11,10 +12,7 @@ function getPostsData() {
     return getPostsDataPromise;
 }
 
-
-let postPostDataPromise = null;
-
-function createPost(postData) {
+function createPostRequest(postData) {
     if (postPostDataPromise === null) {
         postPostDataPromise = postJsonDataFromUrl(URLS.POSTS, postData);
     }
@@ -40,4 +38,4 @@ function postJsonDataFromUrl(url, data) {
         });
 }
 
-export default {getPostsData, createPost};
+export default {getPostsData, createPostRequest};
