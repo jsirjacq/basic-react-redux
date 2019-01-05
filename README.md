@@ -1,6 +1,6 @@
-## Basic React Redux
+## Learning React
 
-React example app that demonstrates using React with Redux
+The goal of this React application is to investigate and learn React and the most popular libraries. Actually Redux is the only one implemented.
 
 ### To run the app locally :
 
