@@ -8,27 +8,32 @@ class Postform extends Component {
 
     constructor(props) {
         super(props);
+        this.titleTemp = '';
+        this.bodyTemp = '';
         this.state = {
-            title: '',
-            body: ''
-        }
-        this.onChange = this.onChange.bind(this);
+            post: {}
+        };
+        this.onModifTitle = this.onModifTitle.bind(this);
+        this.onModifBody = this.onModifBody.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
     }
 
-    onChange(e) {
-        this.setState({[e.target.name]: e.target.value});
+    onModifTitle(e) {
+        this.titleTemp = e.target.value;
+    }
+
+    onModifBody(e) {
+        this.bodyTemp = e.target.value;
     }
 
     onSubmit(e) {
         e.preventDefault();
-        const postData = {
-            title: this.state.title,
-            body: this.state.body
-        }
-        services.createPostRequest(postData).then((postRes) => {
-            this.props.createPost(postRes)
-        })
+        const post = {
+            title: this.titleTemp,
+            body: this.bodyTemp
+        };
+        this.setState({ post: post });
+        this.props.createPost(post);
     }
 
     render() {
@@ -38,13 +43,12 @@ class Postform extends Component {
                 <form onSubmit={this.onSubmit}>
                     <div>
                         <label>Title : </label><br/>
-                        <input type="text" name="title" onChange={this.onChange}
-                               value={this.state.title}/>
+                        <input type="text" name="title" onChange={this.onModifTitle}/>
                     </div>
                     <br/>
                     <div>
                         <label>Body : </label><br/>
-                        <textarea name="body" onChange={this.onChange} value={this.state.body}/>
+                        <input type="text" name="body" onChange={this.onModifBody}/>
                     </div>
                     <br/>
                     <button type="submit">Submit</button>
