@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {createPost} from "../store/actions/postActions";
-import services from "../services/services";
+import {createPost} from "../../store/actions/postActions";
+import services from "../../services/services";
 
 class Postform extends Component {
 

@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {fetchPosts} from "../store/actions/postActions";
-import services from "../services/services"
+import {fetchPosts} from "../../store/actions/postActions";
+import services from "../../services/services"
 
 class Posts extends Component {
 
