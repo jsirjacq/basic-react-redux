@@ -1,6 +1,6 @@
 const URLS = {
     POSTS: "https://jsonplaceholder.typicode.com/posts",
-    IMG: "https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY"
+    IMG: "https://api.nasa.gov/planetary/apod?api_key=NNKOjkoul8n1CH18TWA9gwngW1s1SmjESPjNoUFo"
 };
 
 let getPostsDataPromise = null;
