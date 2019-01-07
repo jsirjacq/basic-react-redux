@@ -1,5 +1,6 @@
 const URLS = {
-    POSTS: "https://jsonplaceholder.typicode.com/posts"
+    POSTS: "https://jsonplaceholder.typicode.com/posts",
+    IMG: "https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY"
 };
 
 let getPostsDataPromise = null;
@@ -9,6 +10,15 @@ function getPostsData() {
         getPostsDataPromise = getJsonDataFromUrl(URLS.POSTS);
     }
     return getPostsDataPromise;
+}
+
+let getImageDataPromise = null;
+
+function getImageData() {
+    if (getImageDataPromise === null) {
+        getImageDataPromise = getJsonDataFromUrl(URLS.IMG);
+    }
+    return getImageDataPromise;
 }
 
 function createPostRequest(postData) {
@@ -34,4 +44,4 @@ function postJsonDataFromUrl(url, data) {
         });
 }
 
-export default {getPostsData, createPostRequest};
+export default {getPostsData, createPostRequest, getImageData};

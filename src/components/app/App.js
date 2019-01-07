@@ -3,6 +3,7 @@ import logo from '../../logo.svg';
 
 import Posts from '../posts/Posts';
 import Postform from '../postform/Postform';
+import Image from '../image/Image'
 
 class App extends Component {
     render() {
@@ -11,10 +12,13 @@ class App extends Component {
                     <header className="App-header">
                         <img src={logo} className="App-logo" alt="logo"/>
                     </header>
-
+                    <hr/>
+                    <Image/>
+                    <hr/>
                     <Postform/>
                     <hr/>
                     <Posts/>
+
 
                 </div>
         );

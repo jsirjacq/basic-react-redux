@@ -1,6 +1,8 @@
 import {combineReducers} from 'redux';
 import postReducer from './postReducer'
+import imageReducer from "./imageReducer";
 
 export default combineReducers({
-    posts: postReducer
+    posts: postReducer,
+    image: imageReducer
 });
